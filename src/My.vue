@@ -1,5 +1,5 @@
 <template>
-  <div class="my">
+  <div class="blacklist-my">
     <div class="header">
       <a class="menu" href="" ></a>
       <a class="edit" href="" ></a>
@@ -42,7 +42,9 @@ export default {
 </script>
 
 <style lang="scss">
-  .my {
+  .blacklist-my {
+    background-color: #FFF;
+
     .header {
       height: 200px;
       background-color: #2F3846;
@@ -91,11 +93,13 @@ export default {
         font-size: 14px;
         color: #FFF;
         margin-top: 10px;
+        text-align: center;
       }
 
       .desc {
         font-size: 12px;
         color: #FFF;
+        text-align: center;
       }
     }
 

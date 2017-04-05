@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="blacklist-login">
     <div class="container">
       <div class="logo">Black<span>List</span></div>
       <div class="user">
@@ -27,13 +27,8 @@ export default {
 </script>
 
 <style lang="scss">
-  html,
-  body,
-  #app,
-  .login {
+  .blacklist-login {
     height: 100%;
-  }
-  .login {
     background-color: #2F3846;
     display: flex;
     align-items: center;
@@ -45,6 +40,7 @@ export default {
       padding: 0 40px;
 
       .logo {
+        text-align: center;
         color: #FFF;
         font-size: 50px;
         margin-bottom: 30px;

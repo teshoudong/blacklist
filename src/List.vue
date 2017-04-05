@@ -1,5 +1,5 @@
 <template>
-  <div class="list">
+  <div class="blacklist-list">
     <div class="header">
       <a class="menu" href="" ></a>
       <a class="add" href="" ></a>
@@ -37,11 +37,10 @@ export default {
 </script>
 
 <style lang="scss">
-body {
+.blacklist-list {
+  height: 100%;
   background-color: #2F3846;
-}
 
-.list {
   .header {
     border-bottom: 1px solid #545B66;
     background-color: #2F3846;
