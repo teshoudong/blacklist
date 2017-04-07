@@ -11,7 +11,13 @@
         <div class="item address">FuTian, ShenZhen, GuangDong, Stadium 101</div>
         <div class="item info">Hello world</div>
       </div>
+    </div>
+    <div class="footer">
       <div class="comment">
+        <div class="add">
+          <input type="text">
+          <div class="button">评论</div>
+        </div>
         <div class="item">
           <div class="img">
             <img src="//markpop.github.io/img/author.jpg" alt="">
@@ -106,6 +112,8 @@ export default {
 
     .container {
       padding: 12px;
+      background-color: #2F3846;
+      
 
       .map {
         width: 100%;
@@ -115,19 +123,26 @@ export default {
       }
       
       .list {
+        border-bottom: 1px dash #FFF;
+        background-color: rgba(255, 255, 255, .15);
+        margin: 12px 0;
+        border-radius: 4px;
+
         .item {
           font-size: 12px;
           color: #FFF;
-          line-height: 40px;
+          padding: 15px 0 15px 10px;
           border-bottom: 1px solid rgba(255, 255, 255, .15);
           display: flex;
-          align-items: center;
+          line-height: 15px;
 
           &:last-child {
             border-bottom: 0;
           }
 
           &.name::before {
+            flex-grow: 0;
+            flex-shrink: 0;
             content: ' ';
             display: inline-block;
             width: 15px;
@@ -138,6 +153,8 @@ export default {
           }
 
           &.address::before {
+            flex-grow: 0;
+            flex-shrink: 0;
             content: ' ';
             display: inline-block;
             width: 15px;
@@ -148,6 +165,8 @@ export default {
           }
 
           &.info::before {
+            flex-grow: 0;
+            flex-shrink: 0;
             content: ' ';
             display: inline-block;
             width: 15px;
@@ -158,9 +177,41 @@ export default {
           }
         }
       }
+    }
+
+    .footer {
+      padding: 0 12px;
+      background-color: #2F3846;
 
       .comment {
-        margin-top: 40px;
+        padding: 12px 0;
+
+        .add {
+          height: 40px;
+          display: flex;
+          border-radius: 4px;
+          overflow: hidden;
+          margin-bottom: 12px;
+
+          input {
+            border: 0;
+            outline: 0;
+            flex-grow: 1;
+            flex-shrink: 1;
+            box-sizing: border-box;
+            padding: 0 12px;
+          }
+
+          .button {
+            width: 50px;
+            height: 40px;
+            background-color: #F15D63;
+            font-size: 12px;
+            line-height: 40px;
+            text-align: center;
+            color: #FFF;
+          }
+        }
 
         .item {
           display: flex;
