@@ -5,16 +5,16 @@
       <div class="logo">Black<span>List</span></div>
     </div>
     <div class="container">
-      <div class="item">
+      <div class="item name">
         <input type="text" placeholder="房东">
       </div>
-      <div class="item">
-        <input type="text" placeholder="地址">
+      <div class="item address">
+        <input type="text" disabled placeholder="地址">
       </div>
-      <div class="item">
+      <div class="item num">
         <input type="text" placeholder="门牌号">
       </div>
-      <div class="item">
+      <div class="item phone">
         <input type="text" placeholder="电话">
       </div>
       <div class="item">
@@ -73,9 +73,25 @@ export default {
 
   .container {
     background-color: #2F3846;
+    padding: 8px 0;
 
     .item {
       padding: 8px 12px;
+      position: relative;
+
+      &.address::after {
+        content: ' ';
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: url(./assets/right.svg) no-repeat center center;
+        background-size: contain;
+        position: absolute;
+        right: 12px;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+      }
 
       input {
         border: 0;
