@@ -6,6 +6,7 @@ import List from './List.vue';
 import Add from './Add.vue';
 import Detail from './Detail.vue';
 import Signup from './Signup.vue';
+import Menu from './Menu.vue';
 
 Vue.use(VueRouter);
 
@@ -27,3 +28,8 @@ const router = new VueRouter({
 new Vue({
   router
 }).$mount('#app');
+
+new Vue({
+  el: '#menu',
+  render: h => h(Menu)
+})
