@@ -5,6 +5,7 @@ import My from './My.vue';
 import List from './List.vue';
 import Add from './Add.vue';
 import Detail from './Detail.vue';
+import Signup from './Signup.vue';
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,7 @@ const routes = [
   { path: '/list', component: List },
   { path: '/add', component: Add },
   { path: '/detail', component: Detail },
+  { path: '/signup', component: Signup }
 ];
 
 const router = new VueRouter({

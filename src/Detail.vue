@@ -200,6 +200,7 @@ export default {
             flex-shrink: 1;
             box-sizing: border-box;
             padding: 0 12px;
+            border-radius: 0;
           }
 
           .button {
