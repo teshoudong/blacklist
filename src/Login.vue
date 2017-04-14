@@ -8,11 +8,11 @@
       <div class="password">
         <input type="password">
       </div>
-      <div class="button">登陆</div>
-      <a class="forget" href="">忘记密码？</a>
+      <div class="button" @click="click">登陆</div>
+      <router-link class="forget" to="/signup">忘记密码？</router-link>
     </div>
     <div class="footer">
-      <a class="signup" href="">注册</a>
+      <router-link class="signup" to="/signup">注册</router-link>
     </div>
   </div>
 </template>
@@ -22,6 +22,11 @@ export default {
   name: 'login',
   data () {
     return {}
+  },
+  methods: {
+    click() {
+      location.hash = '/';
+    }
   }
 }
 </script>

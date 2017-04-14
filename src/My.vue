@@ -1,8 +1,8 @@
 <template>
   <div class="blacklist-my">
     <div class="header">
-      <a class="menu" href="" ></a>
-      <a class="edit" href="" ></a>
+      <i class="menu" @click="click('menu')"></i>
+      <i class="edit"></i>
       <div class="img">
         <img src="//markpop.github.io/img/author.jpg" alt="">
       </div>
@@ -37,6 +37,13 @@ export default {
   name: 'my',
   data () {
     return {}
+  },
+  methods: {
+    click(type) {
+      if (type === 'menu') {
+        this.$store.commit('toggleMenu');
+      }
+    }
   }
 }
 </script>

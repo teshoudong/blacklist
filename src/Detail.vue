@@ -1,40 +1,30 @@
 <template>
   <div class="blacklist-detail">
     <div class="header">
-      <a class="menu" href="" ></a>
+      <i class="menu" @click="click('menu')"></i>
       <div class="logo">Black<span>List</span></div>
     </div>
     <div class="container">
-      <gmap-map class="map" :center="mapCenter" :zoom="15" :zoomControl="false"></gmap-map>
-      <div class="list">
-        <div class="item name">Jason</div>
-        <div class="item address">FuTian, ShenZhen, GuangDong, Stadium 101</div>
-        <div class="item info">Hello world</div>
+      <el-amap class="map" :zoom="15" mapStyle="blue_night" :center="mapCenter">
+        <el-amap-marker :position="markerPosition" :icon="markerIcon" :offset="markOffset"></el-amap-marker>
+      </el-amap>
+      <div class="list" v-if="item">
+        <div class="item name">{{item.name}}</div>
+        <div class="item address">{{item.address}}</div>
+        <div class="item info">{{item.info}}</div>
       </div>
     </div>
     <div class="footer">
       <div class="comment">
         <div class="add">
-          <input type="text">
-          <div class="button">评论</div>
+          <input type="text" v-model="commentInput">
+          <div class="button" @click="pubComment">评论</div>
         </div>
-        <div class="item">
+        <div class="item" v-for="item in comments">
           <div class="img">
-            <img src="//markpop.github.io/img/author.jpg" alt="">
+            <img :src="item.img" alt="">
           </div>
-          <div class="content">Hello world</div>
-        </div>
-        <div class="item">
-          <div class="img">
-            <img src="//markpop.github.io/img/author.jpg" alt="">
-          </div>
-          <div class="content">Hello worldHello worldHello worldHello worldHello worldHello worldHello worldHello worldHello worldHello world</div>
-        </div>
-        <div class="item">
-          <div class="img">
-            <img src="//markpop.github.io/img/author.jpg" alt="">
-          </div>
-          <div class="content">Hello world</div>
+          <div class="content">{{item.content}}</div>
         </div>
       </div>
     </div>
@@ -42,34 +32,45 @@
 </template>
 
 <script>
-import * as VueGoogleMaps from 'vue2-google-maps';
-import Vue from 'vue';
-
-Vue.use(VueGoogleMaps, {
-  load: {
-    key: 'AIzaSyDCWRYvTR01zqJ5C4d3LhEIfRhCx-UYs2Y'
-  }
-});
-
+import markerIcon from './assets/address.svg';
 export default {
   name: 'detail',
   data () {
     return {
-      mapCenter: {lat: 0, lng: 0}
+      commentInput: '',
+      mapCenter: [116.397428, 39.90923],
+      markerPosition: [116.397428, 39.90923],
+      markOffset: [-13, -13],
+      markerIcon,
+      item: {
+        name: 'name',
+        address: 'FuTian, ShenZhen, GuangDong, Stadium 101',
+        info: 'Hello world'
+      },
+      comments: [
+        {
+          img: '//markpop.github.io/img/author.jpg',
+          content: 'Hello world'
+        }
+      ]
     }
   },
   created() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.mapCenter = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-      }, () => {
-
-      });
-    } else {
-
+    console.log(this.$route.params.id);
+  },
+  methods: {
+    click(type) {
+      if (type === 'menu') {
+        this.$store.commit('toggleMenu');
+      }
+    },
+    pubComment() {
+      if (this.commentInput) {
+        this.comments.unshift({
+          img: '//markpop.github.io/img/author.jpg',
+          content: this.commentInput
+        });
+      }
     }
   }
 }
@@ -118,8 +119,13 @@ export default {
       .map {
         width: 100%;
         height: 150px;
-        border-radius: 5px;
-        overflow: hidden;
+        // border-radius: 5px;
+        // overflow: hidden;
+
+        .amap-marker img {
+          width: 26px;
+          height: 26px;
+        }
       }
       
       .list {

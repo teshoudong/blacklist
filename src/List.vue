@@ -1,26 +1,18 @@
 <template>
   <div class="blacklist-list">
     <div class="header">
-      <a class="menu" href="" ></a>
-      <a class="add" href="" ></a>
+      <i class="menu" @click="click('menu')"></i>
+      <i class="add" @click="click('add')"></i>
       <div class="logo">Black<span>List</span></div>
     </div>
     <div class="container">
       <div class="search">
-        <a href="" class="button">搜索</a>
+        <router-link class="button" to="/search">搜索</router-link>
       </div>
       <div class="content">
-        <div class="item active">
-          <h1 class="title">title</h1>
-          <p class="subtitle">subtitle</p>
-        </div>
-        <div class="item">
-          <h1 class="title">title</h1>
-          <p class="subtitle">subtitle</p>
-        </div>
-        <div class="item">
-          <h1 class="title">title</h1>
-          <p class="subtitle">subtitle</p>
+        <div class="item" v-for="item in list" @click="click('item', item)">
+          <h1 class="title">{{item.title}}</h1>
+          <p class="subtitle">{{item.subtitle}}</p>
         </div>
       </div>
     </div>
@@ -31,7 +23,26 @@
 export default {
   name: 'list',
   data () {
-    return {}
+    return {
+      list: [
+        {
+          id: '12',
+          title: 'title',
+          subtitle: 'subtitle'
+        }
+      ]
+    }
+  },
+  methods: {
+    click(type, obj) {
+      if (type === 'menu') {
+        this.$store.commit('toggleMenu');
+      } else if(type === 'add') {
+        location.hash = 'add';
+      } else {
+        location.hash = `detail/${obj.id}`;
+      }
+    }
   }
 }
 </script>
