@@ -5,7 +5,7 @@
   "author": "成鹏 <jianhua.djh@alibaba-inc.com>",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --host 30.7.11.169",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --host 127.0.0.1",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {

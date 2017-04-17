@@ -5,18 +5,10 @@
       <router-link class="cancel" to="/">取消</router-link>
     </div>
     <div class="content">
-      <div class="item">
-        <h1 class="title">asdadasd</h1>
-        <p class="subtitle">asdadsads</p>
-      </div>
-      <div class="item">
-        <h1 class="title">asdadasd</h1>
-        <p class="subtitle">asdadsads</p>
-      </div>
-      <div class="item">
-        <h1 class="title">asdadasd</h1>
-        <p class="subtitle">asdadsads</p>
-      </div>
+      <div class="item" v-for="item in list" @click="click('item', item)">
+          <h1 class="title">{{item.title}}</h1>
+          <p class="subtitle">{{item.subtitle}}</p>
+        </div>
     </div>
   </div>
 </template>
@@ -25,7 +17,22 @@
 export default {
   name: 'app',
   data () {
-    return {}
+    return {
+      list: [
+        {
+          id: '12',
+          title: 'title',
+          subtitle: 'subtitle'
+        }
+      ]
+    }
+  },
+  methods: {
+    click(type, obj) {
+      if (type === 'item') {
+        location.hash = `detail/${obj.id}`;
+      }
+    }
   }
 }
 </script>
